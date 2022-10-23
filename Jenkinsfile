@@ -10,9 +10,10 @@ pipeline {
 
         stage('Run') {
             steps {
+                sh 'sudo service docker stop'
+                sh 'sudo service docker start'
                 sh 'sudo docker run -d -p 81:8081 -d jenkins-build'
             }
         }
     }
 }
-
