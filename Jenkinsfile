@@ -4,17 +4,14 @@ pipeline {
         stage('Build') {
             steps {
                 sh 'sudo docker rm -f $(sudo docker ps -a -q)'
-                sh 'sudo docker build /home/jenkins/workspace/job-node-01 -t pipeline-01'
+                sh 'sudo docker build /home/jenkins/workspace/pipeline-01 -t jenkins-build'
             }
         }
 
         stage('Run') {
             steps {
-                sh 'sudo service docker stop'
-                sh 'sudo service docker start'
-                sh 'sudo docker run -d -p 81:8081 -d pipeline-01'
+                sh 'sudo docker run -d -p 81:8081 -d jenkins-build'
             }
         }
     }
 }
-
