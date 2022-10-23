@@ -6,6 +6,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
+                sh 'sudo docker container prune -f'
                 sh 'sudo docker build . -t jacquesguinebault/c270-assignment'
             }
         }
