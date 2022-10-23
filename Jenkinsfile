@@ -21,7 +21,7 @@ pipeline {
 
         stage('Push to Dockerhub') {
             steps {
-                sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+                sh 'echo $DOCKERHUB_CREDENTIALS_PSW | sudo docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
                 sh 'sudo docker push jacquesguinebault/c270-assignment'
             }
         }
